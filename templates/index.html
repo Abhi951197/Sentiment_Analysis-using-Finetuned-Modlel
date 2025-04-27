@@ -1,0 +1,94 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sentiment Analyzer | Powerful Text Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <meta name="description" content="Analyze sentiment in text using our powerful AI model with LoRA fine-tuned DistilBERT">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-brain"></i> AI Sentiment Analyzer</h1>
+            <p>Discover the emotional tone behind any text with our advanced natural language processing model</p>
+        </header>
+
+        <main>
+            <div class="input-container card-hover">
+                <form id="analyze-form">
+                    <textarea id="text-input" placeholder="Enter your text here to analyze sentiment..." required></textarea>
+                    <div class="actions">
+                        <button id="clear-btn" type="button">
+                            <i class="fas fa-eraser"></i> Clear
+                        </button>
+                        <button id="analyze-btn" type="submit" class="pulse">
+                            <i class="fas fa-search"></i> Analyze Sentiment
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="result-container" class="hidden">
+                <div class="result-header">
+                    <h2>Analysis Result</h2>
+                    <div class="mood-icon">
+                        <i id="mood-icon" class="fas"></i>
+                    </div>
+                </div>
+                
+                <div class="result-details">
+                    <div class="sentiment-result">
+                        <span class="label">Sentiment:</span>
+                        <span id="sentiment-value">-</span>
+                    </div>
+                    
+                    <div class="confidence-result">
+                        <span class="label">Confidence:</span>
+                        <span id="confidence-value">-</span>
+                    </div>
+                    
+                    <div class="meter-container">
+                        <div class="meter">
+                            <div id="confidence-meter" class="meter-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="examples" class="card-hover">
+                <h3><i class="fas fa-lightbulb"></i> Try These Examples</h3>
+                <div class="example-buttons">
+                    <button class="example-btn" data-text="I absolutely love this product, it's amazing and has exceeded all my expectations!">
+                        <i class="fas fa-smile"></i> Very Positive
+                    </button>
+                    <button class="example-btn" data-text="The service was decent, but I think there's room for improvement.">
+                        <i class="fas fa-meh"></i> Neutral
+                    </button>
+                    <button class="example-btn" data-text="This is the worst experience I've ever had. I'm extremely disappointed.">
+                        <i class="fas fa-frown"></i> Very Negative
+                    </button>
+                </div>
+            </div>
+
+            <div id="loading" class="hidden">
+                <div class="spinner"></div>
+                <p>Analyzing your text...</p>
+            </div>
+            
+            <div id="error-message" class="hidden">
+                <i class="fas fa-exclamation-circle"></i>
+                <p id="error-text"></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by DistilBERT with LoRA Adapters | <span data-tooltip="Low-Rank Adaptation for efficient fine-tuning">LoRA</span> Technology</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
