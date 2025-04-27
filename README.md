@@ -1,101 +1,34 @@
-Sentiment Analysis Using Fine-tuned DistilBERT
-This project performs sentiment analysis on movie reviews using a fine-tuned DistilBERT model. The model was pre-trained on the IMDB dataset, using the DistilBERT architecture, which is a smaller and faster variant of the original BERT model.
+# Sentiment Analysis Using Fine-tuned DistilBERT
 
-Project Overview
-Model Architecture: Fine-tuned DistilBERT for sequence classification tasks.
+This project performs sentiment analysis on movie reviews using a fine-tuned **DistilBERT** model. The model was pre-trained on the **IMDB dataset**, which contains 50,000 movie reviews labeled as **positive** or **negative**.
 
-Dataset: The IMDB dataset, which contains 50,000 movie reviews labeled as positive or negative.
+---
 
-Model Training: Fine-tuned for sentiment analysis task.
+## Project Overview
 
-Test Accuracy: Achieved 84.7% accuracy on the test dataset.
+- **Model Architecture**: Fine-tuned **DistilBERT** for sequence classification tasks.
+- **Dataset**: **IMDB dataset** (50,000 labeled movie reviews).
+- **Model Training**: The model was fine-tuned to predict sentiment (positive or negative).
+- **Test Accuracy**: Achieved **84.7% accuracy** on the test dataset.
 
-Setup & Installation
-Clone the repository:
+---
 
-bash
-Copy
-Edit
-git clone https://github.com/Abhi951197/Sentiment_Analysis-using-Finetuned-Modlel.git
-cd Sentiment_Analysis-using-Finetuned-Modlel
-Install the required dependencies:
+## Setup & Installation
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Ensure you have Hugging Face Transformers and Datasets library installed:
+1. **Clone the repository**:
 
-bash
-Copy
-Edit
-pip install transformers datasets
-Optionally, install PyTorch if it's not already installed:
+   ```bash
+   git clone https://github.com/Abhi951197/Sentiment_Analysis-using-Finetuned-Modlel.git
+   cd Sentiment_Analysis-using-Finetuned-Modlel
 
-bash
-Copy
-Edit
-pip install torch
-Training the Model
-To train the model on the IMDB dataset, run the train.py script:
+2. **Install the required dependencies**:
 
-bash
-Copy
-Edit
-python train.py
-The model will be trained on the IMDB dataset using the DistilBERT architecture and will save the trained model to the directory ./lora-distilbert-sentiment/.
+Create a requirements.txt file with the following content:
+transformers
+datasets
+torch
+ Then run:
+ pip install -r requirements.txt
 
-Testing the Model
-To evaluate the fine-tuned model and check the test accuracy, run the following script:
 
-bash
-Copy
-Edit
-python test.py
-The model will evaluate the test set and output the accuracy.
-
-Test Accuracy: 84.7%
-
-Model Inference
-Once trained, you can use the fine-tuned model to predict the sentiment of new movie reviews. Here's an example of how to do this:
-
-python
-Copy
-Edit
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
-import torch
-
-# Load the fine-tuned model and tokenizer
-model = AutoModelForSequenceClassification.from_pretrained("./lora-distilbert-sentiment")
-tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
-
-# Example text
-text = "The movie was fantastic! I really enjoyed it."
-
-# Tokenize and predict
-inputs = tokenizer(text, return_tensors="pt", truncation=True, padding="max_length", max_length=256)
-with torch.no_grad():
-    logits = model(**inputs).logits
-    predicted_class = logits.argmax().item()
-
-# Print result
-if predicted_class == 1:
-    print("Positive Sentiment")
-else:
-    print("Negative Sentiment")
-Folder Structure
-bash
-Copy
-Edit
-Sentiment_Analysis-using-Finetuned-Modlel/
-├── lora-distilbert-sentiment/  # Fine-tuned model and tokenizer
-├── train.py                   # Training script
-├── test.py                    # Testing script
-├── requirements.txt           # Project dependencies
-└── README.md                  # Project documentation
-Contributions
-Feel free to fork the repository and contribute by opening an issue or a pull request. Any contributions to improve the model or the code are welcome!
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
