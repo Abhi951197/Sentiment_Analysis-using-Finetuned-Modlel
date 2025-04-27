@@ -22,13 +22,23 @@ This project performs sentiment analysis on movie reviews using a fine-tuned **D
    cd Sentiment_Analysis-using-Finetuned-Modlel
 
 2. **Install the required dependencies**:
+         Create a requirements.txt file with the following content:
+   ```bash
+   transformers
+   datasets
+   torch
+3. **Then run**:
+   ```bash
+   pip install -r requirements.txt
 
-Create a requirements.txt file with the following content:
-transformers
-datasets
-torch
- Then run:
- pip install -r requirements.txt
+   
+
+
+
+
+
+
+
 
 
 
